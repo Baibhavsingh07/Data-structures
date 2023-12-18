@@ -1,11 +1,15 @@
 class MinStack {
 public:
 vector<int>a;
+// int m=INT_MAX;
+
     MinStack() {
         
     }
     
     void push(int val) {
+        // m=min(m,val);
+
         a.push_back(val);
     }
     
