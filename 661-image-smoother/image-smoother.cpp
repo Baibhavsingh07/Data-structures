@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<vector<int>> imageSmoother(vector<vector<int>>& a) {
-        int i,j,k,c=0,s=0;
+        int i,j,c=0,s=0;
         int n=a.size();
         int m = a[0].size();
         vector<vector<int>>ans(n,vector<int>(m,0));
