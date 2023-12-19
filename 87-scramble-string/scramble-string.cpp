@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-map<string,int>tbl;
+map<string,bool>tbl;
 
     bool f(string s1,string s2){
         if(s1==s2)
@@ -11,6 +11,30 @@ map<string,int>tbl;
 
         int n=s1.size();
         if(tbl.find(key)==tbl.end()){
+
+        //checking if both strings have same characters
+        int c=0;
+        unordered_map<char,int>map;
+        for(auto x:s1)
+        map[x]++;
+
+        for(auto x:s2){
+            if(map.find(x)==map.end()){
+                c=1;
+                break;
+            }
+
+            if(map[x]==1)
+            map.erase(x);
+            else
+            map[x]--;
+        }
+
+        if(c==1){
+            tbl[key]=0;
+            return tbl[key];
+        }
+
         for(int i=1;i<n;i++){
 
             int l = f(s1.substr(0,i),s2.substr(0,i)) and f(s1.substr(i),s2.substr(i));
