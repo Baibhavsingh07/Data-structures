@@ -10,7 +10,7 @@ vector<vector<int>>tbl;
 
         int n=b.size();
 
-        int k = n - i+j-1;
+        int k = n - i+j-1;   //calculating index from last
 
         if(tbl[i][j]==-1){
         int l = a[i]*b[j]+f(i+1,j+1,a,b);
