@@ -12,7 +12,7 @@ vector<vector<int>>tbl;
 
         int k = n - i+j-1;   //calculating index from last
 
-        if(tbl[i][j]==-1){
+        if(tbl[i][j]==INT_MIN){
         int l = a[i]*b[j]+f(i+1,j+1,a,b);
         int r = a[i]*b[k]+f(i+1,j,a,b);
 
@@ -23,7 +23,7 @@ vector<vector<int>>tbl;
     }
 
     int maximumScore(vector<int>& a, vector<int>& b) {
-        tbl.resize(b.size(),vector<int>(b.size()+1,-1));
+        tbl.resize(b.size(),vector<int>(b.size()+1,INT_MIN));
         return f(0,0,b,a);
     }
 };
