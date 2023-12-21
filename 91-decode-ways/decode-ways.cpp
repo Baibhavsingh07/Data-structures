@@ -1,7 +1,8 @@
 class Solution {
 public:
 
-unordered_map<int,int>tbl;
+// unordered_map<int,int>tbl;
+vector<int>tbl;
 
     int f(int i,string &s){
         if(i>=s.size())
@@ -10,7 +11,7 @@ unordered_map<int,int>tbl;
         if(s[i]=='0')
         return 0;
 
-        if(tbl.find(i)==tbl.end()){
+        if(tbl[i]==-1){
         int l=0,r=0;
         if(i<s.size()-1 and s[i]!='0' ){
             if(s[i]=='2' and s[i+1]<'7'){
@@ -32,6 +33,7 @@ unordered_map<int,int>tbl;
     }
 
     int numDecodings(string s) {
+        tbl.resize(s.size(),-1);
         return f(0,s);
     }
 };
