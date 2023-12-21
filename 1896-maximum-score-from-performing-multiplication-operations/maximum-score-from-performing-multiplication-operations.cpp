@@ -10,14 +10,17 @@ vector<vector<int>>tbl;
 
         int n=b.size();
 
+        if(tbl[i][j]!=INT_MIN)
+        return tbl[i][j];
+
+
         int k = n - i+j-1;   //calculating index from last
 
-        if(tbl[i][j]==INT_MIN){
         int l = a[i]*b[j]+f(i+1,j+1,a,b);
         int r = a[i]*b[k]+f(i+1,j,a,b);
 
         tbl[i][j] = max(l,r);
-        }
+        
 
         return tbl[i][j];
     }
