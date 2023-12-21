@@ -1,7 +1,6 @@
 class Solution {
 public:
 
-// unordered_map<int,int>tbl;
 vector<int>tbl;
 
     int f(int i,string &s){
