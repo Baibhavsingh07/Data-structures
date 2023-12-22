@@ -1,19 +1,22 @@
 class Solution {
 public:
     int maxScore(string s) {
-        int j,c=0;
+        int i,j,c=0,ones=0,z=0;
 
-        for(int i=1;i<s.size();i++){
-            int zeroes=0,ones=0;
-            for(j=0;j<i;j++)
-            if(s[j]=='0')
-            zeroes++;
+        z = s[0]=='0'?1:0;
 
-            for(j=i;j<s.size();j++)
-            if(s[j]=='1')
-            ones++;
+        for(i=1;i<s.size();i++)
+        if(s[i]=='1')
+        ones++;
 
-            c=max(c,ones+zeroes);
+        for(i=1;i<s.size();i++){
+            c=max(c,ones+z);
+
+            if(s[i]=='0')
+                z++;
+            if(s[i]=='1')
+            ones--;
+
         }
 
         return c;
