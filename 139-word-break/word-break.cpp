@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-map<int,int>tbl;
+unordered_map<int,int>tbl;
 
     int f(int i,string s, vector<string>& w){
         if(i==s.size())return 1;
