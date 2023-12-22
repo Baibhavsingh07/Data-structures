@@ -31,6 +31,7 @@ vector<int>tbl;
     }
 
     bool wordBreak(string s, vector<string>& w) {
+        
         tbl.resize(s.size(),-1);
         return f(0,s,w);
     }
