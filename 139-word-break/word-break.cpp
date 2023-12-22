@@ -1,14 +1,14 @@
 class Solution {
 public:
 
-unordered_map<int,int>tbl;
+vector<int>tbl;
 
     int f(int i,string s, vector<string>& w){
         if(i==s.size())return 1;
 
         int ans=0;
 
-        if(tbl.find(i)!=tbl.end())
+        if(tbl[i]!=-1)
         return tbl[i];
 
         for(auto x:w){
@@ -31,6 +31,7 @@ unordered_map<int,int>tbl;
     }
 
     bool wordBreak(string s, vector<string>& w) {
+        tbl.resize(s.size(),-1);
         return f(0,s,w);
     }
 };
