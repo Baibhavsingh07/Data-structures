@@ -1,9 +1,9 @@
 class Solution {
 public:
     int maxScore(string s) {
-        int i,j,c=0;
+        int j,c=0;
 
-        for(i=1;i<s.size();i++){
+        for(int i=1;i<s.size();i++){
             int zeroes=0,ones=0;
             for(j=0;j<i;j++)
             if(s[j]=='0')
