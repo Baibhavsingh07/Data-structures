@@ -1,7 +1,6 @@
 class Solution {
 public:
     bool isPathCrossing(string a) {
-        int i,j,c=0;
         int x=0,y=0;
 
         set<pair<int,int>>set;
