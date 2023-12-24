@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minOperations(string s) {
-        int i,j,k,c=0,x=0;
+        int i,c=0,x=0;
 
         for(i=0;i<s.size();i++){
             if(i%2==0 and s[i]=='0')
