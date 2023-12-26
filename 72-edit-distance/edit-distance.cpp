@@ -49,15 +49,7 @@ public:
 
             }
         }
-
-        // for(auto x:tbl){
-        // for(auto y:x)
-        // cout<<y<<" ";
-
-        // cout<<endl;
-        // }
-
-        
+       
         return tbl[a.size()][b.size()];
 
     }
