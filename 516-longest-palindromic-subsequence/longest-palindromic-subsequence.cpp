@@ -7,8 +7,6 @@ vector<vector<int>>tbl;
         if(i>j) return 0;
         if(i==j) return 1;
 
-        if(i>=a.size() or j<0) return 0;
-
         if(tbl[i][j]!=-1) return tbl[i][j];
 
         int l=0,r=0,m=0;
@@ -24,6 +22,7 @@ vector<vector<int>>tbl;
 
     int longestPalindromeSubseq(string s) {
         tbl.resize(s.size()+1,vector<int>(s.size()+1,-1));
+
         return f(0,s.size()-1,s);
     }
 };
