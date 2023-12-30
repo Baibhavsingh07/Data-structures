@@ -1,15 +1,15 @@
 class Solution {
 public:
     bool makeEqual(vector<string>& a) {
-        unordered_map<char,int>map;
+        vector<int>map(27);
         for(auto x:a)
         for(auto y:x)
-        map[y]++;
+        map[y-'a']++;
 
         int n=a.size();
 
         for(auto x:map)
-        if(x.second%n!=0) return 0;
+        if(x%n!=0) return 0;
 
         return 1;
         
