@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numberOfBeams(vector<string>& a) {
-        int i,j,k,c=0,s=0;
+        int i,j,c=0,s=0;
 
         vector<int>ones;
 
