@@ -9,10 +9,10 @@ public:
         for(auto x:map){
             int f = x.second;
             if(f==1 ) return -1;
-            if(f==2 or f==3){
-                c+=1;
-                continue;
-            }
+            // if(f==2 or f==3){
+            //     c+=1;
+            //     continue;
+            // }
             int rem = f%3;
            
             int t=0,th=0; 
