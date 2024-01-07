@@ -1,50 +1,24 @@
 class Solution {
 public:
 
-    int f(int i,vector<int>&a,int started,vector<vector<int>>&tbl){
-        if(i==a.size() and started==1) return 0;
-        if(i==a.size() and started==0) return INT_MIN;
-
-        if(tbl[i][started]!=INT_MAX) return tbl[i][started];
-
-
-        if(started==0){
-            int l=f( i+1,a,0,tbl);
-            int r = a[i]+f(i+1,a,1,tbl);
-            return tbl[i][started]=max(l,r);
-        }else{
-            int l =f(a.size(),a,1,tbl);
-            int r =a[i]+f(i+1,a,1,tbl);
-            return tbl[i][started]=max(l,r);
-
-        }
-        
-    }
-
 
     int maxSubArray(vector<int>& a) {
         int n=a.size();
 
         int i,j,k,c=0,m=INT_MIN;
         int started = 0;
-        vector<vector<int>>tbl(a.size()+1,vector<int>(2,INT_MIN));
 
-        for(i=0;i<=a.size();i++) tbl[i][1]=0;
+        int curr=0;
 
-        for(i=a.size()-1;i>=0;i--){
+        for(i=0;i<a.size();i++){
+            if(curr<0) curr=a[i];
+            else{
+                curr+=a[i];
+            }
+                m=max(m,curr);
 
-            int l=tbl[i+1][0];
-            int r = a[i]+tbl[i+1][1];
-            tbl[i][0]=max(l,r);
-
-             l =tbl[a.size()][1];
-             r =a[i]+tbl[i+1][1];
-            tbl[i][1]=max(l,r);
-
-        }
-
-        return tbl[0][0];       
-
+        }      
+        return m;
         
     }
 };
