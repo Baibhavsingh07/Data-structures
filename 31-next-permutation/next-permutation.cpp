@@ -26,9 +26,7 @@ public:
 	}
 	}
 	
-	int t = a[k];
-	a[k]=a[i-1];
-	a[i-1]=t;
+	swap(a[k],a[i-1]);
 	
 	sort(a.begin()+i,a.end());
     }
