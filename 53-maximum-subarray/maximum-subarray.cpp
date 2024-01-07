@@ -5,8 +5,7 @@ public:
     int maxSubArray(vector<int>& a) {
         int n=a.size();
 
-        int i,j,k,c=0,m=INT_MIN;
-        int started = 0;
+        int i,m=INT_MIN;
 
         int curr=0;
 
