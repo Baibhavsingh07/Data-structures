@@ -12,17 +12,12 @@
 class Solution {
 public:
     int rangeSumBST(TreeNode* root, int low, int high) {
-        if(!root)
-        return 0;
+        if(!root) return 0;
 
-        if(root->val >= low and root->val <=high){
-        return root->val + rangeSumBST(root->left,low,high) + rangeSumBST(root->right,low,high);
-        }
-        else{
-        return 0+ rangeSumBST(root->left,low,high) + rangeSumBST(root->right,low,high);
-        }
-        return 0;
+        int x=0;
+        if(root->val >=low and root->val <=high)
+        x=root->val;
 
-        
+        return x+rangeSumBST(root->left,low,high)+rangeSumBST(root->right,low,high);
     }
 };
