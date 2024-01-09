@@ -17,6 +17,7 @@ public:
         if(!root) return ;
         if(!root->left and !root->right){
             v.push_back(root->val);
+            return;
         }
         f(root->left,v);
         f(root->right,v);
