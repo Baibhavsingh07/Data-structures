@@ -1,51 +1,30 @@
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& a)
-     {
-            int i,j,k,s=0,c=0;
-            int n=a.size();
-            vector<vector<int>> v;
-
-            if(n<3)
-            return v;
-            sort(a.begin(),a.end());
-            i=0;
-            j=0;
-            
-            map<vector<int>,int> se;
-
-            for(i=0;i<n;i++)
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        unordered_map<int,int>mp;
+        vector<vector<int>>ans;
+        set<vector<int>>st;
+        vector<int>v;
+        for(int i=0;i<nums.size();++i)
+        {
+            for(int j=i+1;j<nums.size();++j)
             {
-                int low=i+1;
-                int high=n-1;
-                while(high>low)
+                if(i!=j&&mp.find(-nums[i]-nums[j])!=mp.end()&&mp[-nums[i]-nums[j]]!=i&&mp[-nums[i]-nums[j]]!=j)
                 {
-                    s=a[i]+a[low]+a[high];
-                    if(s==0)
-                    {
-                        se[{a[i],a[low],a[high]}]++;
-                        
-
-                        low++;
-                        high--;
-                        
-                    }
-                    else if(s>0)
-                    high--;
-                    else
-                    low++;
+                    v.push_back(nums[i]);
+                    v.push_back(nums[j]);
+                    v.push_back(-nums[i]-nums[j]);
+                    sort(v.begin(),v.end());
+                    st.insert(v);
+                    v.clear();
                 }
+                mp[nums[j]]=j;
             }
-
-
-            
-
-            for(auto val: se)
-            {
-                v.push_back(val.first);
-            }
-            
-            return v;
-
+        }
+        for(auto i:st)
+        {
+            ans.push_back(i);
+        }
+        return ans;
     }
 };
