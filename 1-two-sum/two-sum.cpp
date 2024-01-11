@@ -17,10 +17,20 @@ public:
         // }
         // return ans;
 
-        for(int i=0;i<nums.size();i++){
-            int j = search(nums,target-nums[i]);
+        // for(int i=0;i<nums.size();i++){
+        //     int j = search(nums,target-nums[i]);
 
-            if(j!=-1 and i!=j) return {i,j};
+        //     if(j!=-1 and i!=j) return {i,j};
+        // }
+
+        // return {-1,-1};
+
+        unordered_map<int,int>map;
+        for(int i=0;i<nums.size();i++){
+            if(map.find(target-nums[i])!=map.end()){
+                return {i,map[target-nums[i]]};
+            }
+            map[nums[i]]=i;
         }
 
         return {-1,-1};
