@@ -5,7 +5,8 @@ public:
         int c=0;
         for(int i=0;i<s.size()/2;i++){
             for(auto x:a){
-                if(x==s[i]){ c++;
+                if(x==s[i])
+                { c++;
                 break;}
             }
         }
