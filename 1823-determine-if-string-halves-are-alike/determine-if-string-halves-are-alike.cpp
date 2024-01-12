@@ -14,7 +14,8 @@ public:
         for(int i=s.size()/2;i<s.size();i++){
             for(auto x:a)
             {
-                if(x==s[i]){ c--;
+                if(x==s[i]){ 
+                    c--;
                 break;}
             }
         }
