@@ -1,30 +1,19 @@
 class Solution {
 public:
 
-   
-//my solution
-
-    int rob(vector<int>& a) {
-        int m=INT_MIN;
-        int c=0,s=0,i=0;
-        int n=a.size();
-
-        vector<int>tbl(n+2,0);
-
-        // t[i]=max(i>0?t[i-1]:0,(i>1?t[i-2]:0 ) +  a[i]);
 
 
+    int f(int i,vector<int>&a,unordered_map<int,int>&tbl){
+        if(i>=a.size()) return 0;
 
-        for(i=n-1;i>=0;i--){
-            tbl[i] =max(tbl[i+1],a[i]+tbl[i+2]) ;
-            
-            
+        if(tbl.find(i)!=tbl.end()) return tbl[i];
 
-           
-
-        }
-        return tbl[0];
+        return tbl[i] =  max(f(i+1,a,tbl),a[i]+f(i+2,a,tbl));
+    }
+ 
+    int rob(vector<int>& a) { 
         
-        
+        unordered_map<int,int>tbl;
+        return f(0,a,tbl);
     }
 };
