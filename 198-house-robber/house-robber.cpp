@@ -14,12 +14,15 @@ public:
     int rob(vector<int>& a) { 
         
         // unordered_map<int,int>tbl;
-        vector<int>tbl(a.size()+2,0);
+        int x=0,y=0;
 
         for(int i=a.size()-1;i>=0;i--){
-            tbl[i] = max(tbl[i+1],a[i]+tbl[i+2]);
+            int ans=max(x,y+a[i]);
+            y=x;
+            x=ans;
+
         }
 
-        return tbl[0];
+        return x;
     }
 };
