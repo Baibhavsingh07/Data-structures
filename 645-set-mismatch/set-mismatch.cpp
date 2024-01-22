@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> findErrorNums(vector<int>& a) {
         vector<int>ans(2);
-        set<int>set;
+        unordered_set<int>set;
         for(auto x:a){
             if(set.find(x)!=set.end()){
                 ans[0]=x;
@@ -11,12 +11,11 @@ public:
         }
 
         int i=1;
-        for(auto x:set){
-            if(x!=i){
+        for(i=1;i<=a.size();i++){
+            if(set.find(i)==set.end()){
                 ans[1]=i;
                 return ans;
             }
-            i++;
         }
         ans[1]=i;
         return ans;
