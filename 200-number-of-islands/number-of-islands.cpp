@@ -2,18 +2,20 @@ class Solution {
 public:
 
     void dfs(int i,int j,vector<vector<bool>>& vis,vector<vector<char>>& a){
-        vis[i][j]=1;
-
         if(i+1<a.size() and a[i+1][j]=='1' and !vis[i+1][j]){
+            vis[i+1][j]=1;
             dfs(i+1,j,vis,a);
         }
         if(i-1>=0 and a[i-1][j]=='1' and !vis[i-1][j]){
+            vis[i-1][j]=1;
             dfs(i-1,j,vis,a);
         }
         if(j-1>=0 and a[i][j-1]=='1' and !vis[i][j-1]){
+            vis[i][j-1]=1;
             dfs(i,j-1,vis,a);
         }
         if(j+1<a[0].size() and a[i][j+1]=='1' and !vis[i][j+1]){
+            vis[i][j+1]=1;
             dfs(i,j+1,vis,a);
         }
             
@@ -30,6 +32,7 @@ public:
             for(int j=0;j<a[0].size();j++){
                 if(!vis[i][j] and a[i][j]=='1'){
                     c++;
+                    vis[i][j]=1;
                     dfs(i,j,vis,a);
                 }
             }
