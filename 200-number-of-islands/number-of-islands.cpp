@@ -1,39 +1,22 @@
 class Solution {
 public:
 
-    void dfs(int x,int y,vector<vector<bool>>& vis,vector<vector<char>>& a){
-        
-            queue<pair<int,int>>q;
-            q.push({x,y});
+    void dfs(int i,int j,vector<vector<bool>>& vis,vector<vector<char>>& a){
+        vis[i][j]=1;
 
-            while(!q.empty()){
-                auto curr = q.front();
-                q.pop();
-
-                int  i=curr.first;
-                int j = curr.second;
-
-                if(i+1<a.size() and a[i+1][j]=='1' and vis[i+1][j]==0){
-                    vis[i+1][j]=1;
-                q.push({i+1,j});
-                }
-
-                if(i-1>=0 and a[i-1][j]=='1' and vis[i-1][j]==0){
-                    vis[i-1][j]=1;
-                q.push({i-1,j});
-                }
-
-                if(j-1>=0 and a[i][j-1]=='1' and vis[i][j-1]==0){
-                    vis[i][j-1]=1;
-                q.push({i,j-1});
-                }
-
-                if(j+1<a[0].size() and a[i][1+j]=='1' and vis[i][j+1]==0){
-                vis[i][j+1]=1;
-                q.push({i,j+1});
-
-                }
-            }
+        if(i+1<a.size() and a[i+1][j]=='1' and !vis[i+1][j]){
+            dfs(i+1,j,vis,a);
+        }
+        if(i-1>=0 and a[i-1][j]=='1' and !vis[i-1][j]){
+            dfs(i-1,j,vis,a);
+        }
+        if(j-1>=0 and a[i][j-1]=='1' and !vis[i][j-1]){
+            dfs(i,j-1,vis,a);
+        }
+        if(j+1<a[0].size() and a[i][j+1]=='1' and !vis[i][j+1]){
+            dfs(i,j+1,vis,a);
+        }
+            
         
     }
 
