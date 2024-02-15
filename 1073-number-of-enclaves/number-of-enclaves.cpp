@@ -23,8 +23,9 @@ public:
             int j=curr.second;
 
             
-        int x[]={-1,0,1,0};
-        int y[]={0,1,0,-1};
+        int x[4]={0,0,1,-1};
+int y[4]={1,-1,0,0};
+
 
             for(int k = 0;k<4;k++){
                 int nx=i+x[k];
