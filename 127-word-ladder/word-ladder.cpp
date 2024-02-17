@@ -1,9 +1,6 @@
 class Solution {
 public:
     int ladderLength(string bg, string eg, vector<string>& w) {
-        vector<vector<int>>a;
-
-        vector<int>v(w.size(),0);
         queue<pair<string,int>>q;
 
         q.push({bg,1});
