@@ -14,7 +14,7 @@ map<vector<int>,int>tbl;
         for(int j=i+1;j<a.size();j++){
             if(a[j]-a[i]==k-1 or a[j]-a[i]==k or a[j]-a[i]==k+1  )
             l= l or f(j,a,a[j]-a[i]);
-            // else break;
+            else if(a[j]-a[i]>k+1) break;
         }
 
         return tbl[{i,k}] = l;
