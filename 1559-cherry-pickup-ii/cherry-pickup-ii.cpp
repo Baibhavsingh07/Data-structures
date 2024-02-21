@@ -1,16 +1,16 @@
 class Solution {
 public:
 
-unordered_map<string,int>tbl;
+// unordered_<map<string,int>tbl;
+vector<vector<vector<int>>>tbl;
 
     int f(int i,int j,int y,vector<vector<int>>& a){
         if(i>=a.size()) return 0;
 
         int l=0,r=0;
 
-        string k = to_string(i)+"-"+to_string(j)+"-"+to_string(y);
 
-        if(tbl.find(k)!=tbl.end()) return tbl[k];
+        if(tbl[i][j][y]!=-1) return tbl[i][j][y];
 
         for(int p=-1;p<2;p++){
             for(int q=-1;q<2;q++){
@@ -25,10 +25,11 @@ unordered_map<string,int>tbl;
             }
         }
 
-        return tbl[k] = l;
+        return tbl[i][j][y]= l;
     }
 
     int cherryPickup(vector<vector<int>>& a) {
+        tbl.resize(a.size()+1,vector<vector<int>>(a[0].size()+1,vector<int>(a[0].size()+1,-1)));
         return f(0,0,a[0].size()-1,a);
     }
 };
