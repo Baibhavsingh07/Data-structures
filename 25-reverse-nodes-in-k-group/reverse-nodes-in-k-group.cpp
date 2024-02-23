@@ -42,7 +42,7 @@ public:
                 c--;
             }
 
-            if(c!=0 or !t) return head;
+            if( !t) return head;
 
             ListNode* nxt =nullptr;
 
