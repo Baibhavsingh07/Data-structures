@@ -12,7 +12,7 @@ public:
             sort(a.begin(),a.end());
             return;
         }
-        i--;                 //1 3 4 2 5 7 6
+        i--;                
 
         int x=0,ind=0;
         c=INT_MAX;
