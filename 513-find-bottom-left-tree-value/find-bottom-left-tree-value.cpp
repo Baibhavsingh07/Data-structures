@@ -11,25 +11,23 @@
  */
 class Solution {
 public:
-    int findBottomLeftValue(TreeNode* root) {
-        queue<TreeNode*>q;
+int ml=0;
 
-        q.push(root);
+    void f(TreeNode* root,int &ans,int m){
+        if(!root)return;
 
-        int ans = root->val;
-        while(!q.empty()){
-            int s = q.size();
-
-            while(s--){
-                auto x = q.front();
-                q.pop();
-
-                ans = x->val;
-                if(x->right) q.push(x->right);
-                if(x->left) q.push(x->left);
-            }
+        if(ml<=m){
+        ans = root->val;
+        ml=m;
         }
 
-        return ans;
+        f(root->right,ans,m+1);
+        f(root->left,ans,m+1);
+    }
+
+    int findBottomLeftValue(TreeNode* root) {
+        int x=-1;
+        f(root,x,0);
+        return x;
     }
 };
