@@ -11,8 +11,10 @@ vector<vector<vector<int>>>tbl;
         if(tbl[i][j][c]!=INT_MIN) return tbl[i][j][c];
 
         int l = max(f(i+1,j,a,b,c),f(i,j+1,a,b,c));
+        int r = INT_MIN;
 
-        int r=  f(i+1,j+1,a,b,1)==INT_MIN ?INT_MIN: a[i]*b[j] + f(i+1,j+1,a,b,1);
+        if((a[i]>=0 and b[j]>=0 and c==1) or (a[i]<0 and b[j]<0 and c==1) or c==0 )
+        r= a[i]*b[j] + f(i+1,j+1,a,b,1);
 
         return tbl[i][j][c] = max(l,r);
     }
