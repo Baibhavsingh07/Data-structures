@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    int poss(int m,vector<int>& a, int n, int k ){
+    int poss(int &m,vector<int>& a, int &n, int &k ){
         int c=0,s=0,i=0,j=0;
 
         while(i<a.size()){
