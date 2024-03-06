@@ -10,27 +10,35 @@ int ispalin(int i,int j,string &s){
     }
 
 
-    void f(int i,vector<string>&curr,string &s){
+    vector<vector<string>> f(int i,vector<string>&curr,string &s){
         if(i==s.size()){
-            ans.push_back(curr);
-            return ;
+            return {{}};
         }
+
+                vector<vector<string>>ans;
+
         
         for(int j=i;j<s.size();j++){
             if(ispalin(i,j,s)){
                 string axu  = s.substr(i,j-i+1);
-                curr.push_back(axu);
+                
 
-                f(j+1,curr,s);
-                curr.pop_back();
+                auto x = f(j+1,curr,s);
+                for(auto &v:x){ v.insert(v.begin(),axu);
+                    ans.push_back(v);
+                }
+
+                // cout<<typeid(x).name();
+
             }
         }
+        return ans;
 
     }
 
     vector<vector<string>> partition(string s) {
         vector<string>curr;
-        f(0,curr,s);
+       return f(0,curr,s);
          return ans;
     }
 };
