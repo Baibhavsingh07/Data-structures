@@ -22,7 +22,7 @@ vector<vector<int>>tbl;
 
         if(tbl[i][k]!=-1) return tbl[i][k];
 
-        for(int j=i;j<s.size();j++){
+        for(int j=i;j<s.size()-k+1;j++){
             ans=min(ans, topal(i,j,s) + f(j+1,s,k-1));
         }
 
