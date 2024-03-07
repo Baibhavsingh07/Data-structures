@@ -5,9 +5,10 @@ vector<int>tbl;
 vector<vector<int>>pal;
 
     int ispalin(int i,int j,string &s){
-        while(i<j) if(s[i++]!=s[j--]) return 0;
+        if(i>j) return 1;
+        if(s[i]==s[j]) return ispalin(i+1,j-1,s);
 
-        return 1;
+        return 0;
     }
 
 
