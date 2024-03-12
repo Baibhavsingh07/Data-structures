@@ -12,7 +12,7 @@ public:
         }
 
         for(int x=0;x<ans.size();x++){
-            ans[x].insert(ans[x].begin(),i);
+            ans[x].push_back(i);
         }
 
         return ans;
@@ -21,6 +21,13 @@ public:
 
 
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        return f(0,graph,graph.size()-1);
+
+        auto x = f(0,graph,graph.size()-1);
+
+        for(auto &y:x){
+            reverse(y.begin(),y.end());
+        }
+
+        return x;
     }
 };
