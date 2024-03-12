@@ -1,10 +1,14 @@
 class Solution {
 public:
 
+map<int,vector<vector<int>>>tbl;
+
     vector<vector<int>> f(int i,vector<vector<int>>&a,int n){
         if(i==n) return {{n}};
 
         vector<vector<int>> ans;
+
+        if(tbl.find(i)!=tbl.end()) return tbl[i];
 
         for(auto x:a[i]){
             auto l = f(x,a,n);
@@ -12,22 +16,15 @@ public:
         }
 
         for(int x=0;x<ans.size();x++){
-            ans[x].push_back(i);
+            ans[x].insert(ans[x].begin(),i);
         }
 
-        return ans;
+        return tbl[i] = ans;
 
     }
 
 
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-
-        auto x = f(0,graph,graph.size()-1);
-
-        for(auto &y:x){
-            reverse(y.begin(),y.end());
-        }
-
-        return x;
+        return f(0,graph,graph.size()-1);
     }
 };
