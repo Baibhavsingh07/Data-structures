@@ -1,6 +1,6 @@
 class Solution {
 public:
     int getSum(int a, int b) {
-        return b - (-a);                                        
+        return (a<b?a:b) +( a>b?a:b);                                        
     }
 };
