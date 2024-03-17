@@ -21,14 +21,7 @@ public:
 
         a.push_back(b);
 
-        for(i=0;i<a.size();i++){
-            if(a[i][0] > b[0]){
-                a.insert(a.begin()+i,b); break;
-            }else if(a[i][0]==b[0] and a[i][1] > b[1]){
-                a.insert(a.begin()+i,b); break;
-
-            }
-        }
+        sort(a.begin(),a.end());
 
         for(i=0;i<a.size();i++){
             st = a[i][0];
