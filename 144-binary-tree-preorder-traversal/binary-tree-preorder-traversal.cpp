@@ -14,7 +14,7 @@ public:
     vector<int> preorderTraversal(TreeNode* root) {
         if(!root) return {};
 
-        auto x = preorderTraversal(root->left);
+        vector<int> x = preorderTraversal(root->left);
         auto y = preorderTraversal(root->right);
 
         for(auto z:y) x.push_back(z);
@@ -22,6 +22,5 @@ public:
         x.insert(x.begin(),root->val);
 
         return x;
-
     }
 };
