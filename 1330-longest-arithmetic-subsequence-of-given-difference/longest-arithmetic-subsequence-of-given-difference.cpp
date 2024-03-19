@@ -3,7 +3,7 @@ public:
 vector<int>next;
 vector<int>tbl;
 
-    int f(int i,vector<int>& a,int c){
+    int f(int i,vector<int>& a){
         if(i>=a.size()) return 0;
 
         int l=0,r=0;
@@ -12,7 +12,7 @@ vector<int>tbl;
 
        
         
-        r = 1 + f(next[i],a,1);
+        r = 1 + f(next[i],a);
         
 
         return tbl[i] = max(l,r);
@@ -40,7 +40,7 @@ int ans=0;
         tbl.resize(a.size()+1,-1);
 
         for(int i=0;i<a.size();i++)
-        ans = max(ans, f(i,a,0));
+        ans = max(ans, f(i,a));
 
         return ans;
     }
