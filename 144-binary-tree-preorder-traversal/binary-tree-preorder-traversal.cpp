@@ -15,9 +15,9 @@ public:
         if(!root) return {};
 
         vector<int> x = preorderTraversal(root->left);
-        auto y = preorderTraversal(root->right);
+        vector<int> y = preorderTraversal(root->right);
 
-        for(auto z:y) x.push_back(z);
+        for(int z:y) x.push_back(z);
 
         x.insert(x.begin(),root->val);
 
