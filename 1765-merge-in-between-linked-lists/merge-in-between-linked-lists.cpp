@@ -10,31 +10,21 @@
  */
 class Solution {
 public:
-    ListNode* mergeInBetween(ListNode* l1, int a, int b, ListNode* l2) {
-        ListNode*t1=l1,*t2=l2;
+    ListNode* mergeInBetween(ListNode* list1, int a, int b, ListNode* list2) {
+        auto t1=list1,t2=list2;
+        ListNode* t=nullptr;
 
-        ListNode*t = l1;
+        while( t1 and --a )t1=t1->next;
+        while(t2 and t2->next ) t2=t2->next;
 
-        while(t and b){
-            b--;
-            t=t->next;
-        }
-        t=t->next;
 
-        a--;
+        auto t3=list1;
 
-        while(t1 and t1->next and a){
-           a--;
-            t1=t1->next;
-        }
-        t1->next = t2;
+        while(t3 and b--) t3=t3->next;
 
-        while(t2 and t2->next){
-            t2=t2->next;
-        }
-        
-        t2->next = t;
-        return l1;
-        
+        t1->next = list2;
+        t2->next=t3->next;
+
+        return list1;  
     }
 };
