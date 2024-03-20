@@ -14,11 +14,11 @@ public:
         auto t1=list1,t2=list2;
         ListNode* t=nullptr;
 
-        while( t1 and --a )t1=t1->next;
+        while( t1 and --a and b-- )t1=t1->next;
         while(t2 and t2->next ) t2=t2->next;
 
 
-        auto t3=list1;
+        auto t3=t1;
 
         while(t3 and b--) t3=t3->next;
 
