@@ -10,8 +10,8 @@ public:
         while(j<a.size()){
 
             while( j<a.size() and c < t) c+=a[j++];
-            if(j<a.size())
-            ans=min(ans,j-i+1);
+            // if(j<a.size())
+            // ans=min(ans,j-i+1);
 
             while( i<=j and  c>=t){
                 c=c - a[i++];
