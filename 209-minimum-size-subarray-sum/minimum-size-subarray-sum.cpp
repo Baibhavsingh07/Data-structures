@@ -14,8 +14,8 @@ public:
             // ans=min(ans,j-i+1);
 
             while( i<=j and  c>=t){
+                ans=min(ans,j-i);
                 c=c - a[i++];
-                ans=min(ans,j-i+1);
 
             }
 
