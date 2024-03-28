@@ -11,12 +11,14 @@ public:
                 else map[a[r]]++;
                 r++;
             }
-            if(r==n) break;
-            map[a[r]]++;
-
             ans=max(ans,r-l);
 
-            while(l<r and map.size()>2){
+            if(r==n) break;
+
+            map[a[r]]++;
+
+
+            while( map.size()>2){
                 if(map[a[l]]==1) map.erase(a[l]);
                 else map[a[l]]--;
                 l++;
@@ -24,6 +26,6 @@ public:
             r++;
         }
 
-        return max(ans,r-l);
+        return ans;
     }
 };
