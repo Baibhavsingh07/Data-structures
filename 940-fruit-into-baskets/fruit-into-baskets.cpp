@@ -5,17 +5,19 @@ public:
         int l=0,r=0,i,c=0,ans=1;
         int n=a.size();
 
-        while(r<n){
-            while( r<n and  map.size()<=2){
-                if(map.find(a[r])==map.end() and map.size()==2) break;
-                else map[a[r]]++;
+        map[a[0]]=1;
+
+        while(r+1<n){
+            while( r+1<n and  map.size()<=2){
+                if(map.find(a[r+1])==map.end() and map.size()==2) break;
+                else map[a[r+1]]++;
                 r++;
             }
-            ans=max(ans,r-l);
+            ans=max(ans,r-l+1);
 
-            if(r==n) break;
+            if(r+1==n) break;
 
-            map[a[r]]++;
+            map[a[r+1]]++;
 
 
             while( map.size()>2){
