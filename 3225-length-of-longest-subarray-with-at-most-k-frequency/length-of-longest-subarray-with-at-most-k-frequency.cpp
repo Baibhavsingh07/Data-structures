@@ -10,12 +10,11 @@ public:
                 map[a[r]]++;
                 r++;
             }
+            s = max(s,r-l);
 
             if(r==a.size()){
-                c=1;
                 break;
             }
-            s = max(s,r-l);
 
             map[a[r]]++;
 
@@ -25,8 +24,6 @@ public:
             }
             r++;
         }
-        if(c==1)
-        s=max(s,r-l);
 
         return s;
     }
