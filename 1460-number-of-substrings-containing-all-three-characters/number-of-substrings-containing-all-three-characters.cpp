@@ -1,17 +1,19 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        vector<int>a(3,-1);
+        int i,j,l=0,r=0,ans=0;
+        vector<int>a(3);
 
-        int c=0;
+        while(r<s.size()){
+            a[s[r]-'a']++;
 
-        for(int i=0;i<s.size();i++){
-            a[s[i]-'a']=i;
-
-            c = c+ min(a[0],min(a[1],a[2])) +1;
+            while(a[0]!=0 and a[1]!=0 and a[2]!=0){
+                ans=ans+s.size()-r;
+                a[s[l]-'a']--;
+                l++;
+            }
+            r++;
         }
-
-        return c;
-
+        return ans;
     }
 };
