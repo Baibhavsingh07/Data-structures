@@ -10,7 +10,7 @@ public:
             if(mxe < k) {
                 if(a[r]==m) mxe++;
             }
-            while( mxe>=k){
+            while( mxe==k){
                 ans=ans+a.size()-r;
 
                 if(a[l]==m) mxe--;
