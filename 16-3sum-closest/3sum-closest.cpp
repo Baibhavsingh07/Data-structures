@@ -5,15 +5,14 @@ public:
 
         sort(a.begin(),a.end());
 
-        int ans,pd=INT_MAX;
+        int ans=1e9;
         for(i=0;i<a.size();i++){
             j=i+1;
             k=a.size()-1;
 
             while(j<k){
                 int sum = a[i]+a[j]+a[k];
-                if(abs(t-sum)<pd) {ans=sum;
-                pd=abs(t-sum);}
+                if(abs(t-sum)<abs(t-ans)) ans=sum;
 
                 if(sum==t) return t;
 
