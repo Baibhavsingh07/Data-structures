@@ -29,6 +29,7 @@ public:
         sort(a.begin(),a.end(),valcomp());
 
         for(auto x:a)h+=x[1];
+        for(auto x:a)l=max(l,x[1]);
 
         while(l<=h){
             int m = l + (h-l)/2;
