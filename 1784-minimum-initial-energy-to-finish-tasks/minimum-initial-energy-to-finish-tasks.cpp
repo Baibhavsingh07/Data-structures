@@ -16,8 +16,8 @@ public:
         bool operator()(vector<int>&x,vector<int>&y){
             if(y[1]-y[0] < x[1]-x[0]) return 1;
 
-            if(y[1]-y[0] == x[1]-x[0])
-            return y[1] > x[1];
+            // if(y[1]-y[0] == x[1]-x[0])
+            // return y[1] > x[1];
 
             return 0;
         }
