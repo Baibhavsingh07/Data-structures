@@ -1,12 +1,16 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& a) {
-        vector<int>b(100001,0);
+        int i=1,j,c=0;
 
-        for(auto x:a) b[x]++;
+        for(i=0;i<a.size();i++){
+            while(a[i]!=i+1){
+                if(a[a[i]-1]==a[i]) return a[i];
+                swap(a[i],a[a[i]-1]);
+            }
+        }
 
-        for(int i=0;i<b.size();i++) if(b[i]>1) return i;
-
-        return -1;
+        return a[a.size()-1];
+        
     }
 };
