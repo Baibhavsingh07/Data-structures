@@ -17,9 +17,9 @@ vector<int>a;
         }
 
 
-        for(i=1;i<a.size();i++) if(a[i]>num and a[i-1]<=num){j=i;break;}
+        for(i=0;i<a.size();i++) if(a[i]>num ){j=i;break;}
 
-        a.insert(a.begin()+i,num);
+        a.insert(a.begin()+j,num);
 
     }
     
