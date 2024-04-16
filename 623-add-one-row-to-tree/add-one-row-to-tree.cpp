@@ -14,12 +14,22 @@ public:
 
 vector<TreeNode*>nr;
 
+int val;
+
     void f(TreeNode* root,int d){
         if(!root) return ;
         if(d<1) return ;
 
     	if(d==1) {
-            nr.push_back(root);
+            TreeNode* node1 = new TreeNode(val);
+            TreeNode* node2 = new TreeNode(val);
+
+
+            if(root->left) node1->left=root->left;
+            if(root->right) node2->right=root->right;
+
+            root->left=node1;
+            root->right=node2;
             return;
         }
 
@@ -29,29 +39,17 @@ vector<TreeNode*>nr;
     }
 
 
-    TreeNode* addOneRow(TreeNode* root, int val, int d) {
+    TreeNode* addOneRow(TreeNode* root, int v, int d) {
         if(d==1){
-            TreeNode* node = new TreeNode(val);
+            TreeNode* node = new TreeNode(v);
             node->left=root;
             return node;
         }
 
+        val=v;
+
 
         f(root,d-1);
-
-        for(auto x:nr){
-
-        TreeNode* node1 = new TreeNode(val);
-        TreeNode* node2 = new TreeNode(val);
-
-
-        if(x->left) node1->left=x->left;
-        if(x->right) node2->right=x->right;
-
-        x->left=node1;
-        x->right=node2;
-
-        }
 
         return root;
 
