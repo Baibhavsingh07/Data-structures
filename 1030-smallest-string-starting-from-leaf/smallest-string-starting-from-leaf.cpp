@@ -28,6 +28,8 @@ public:
             ans.push_back(curr);
             return;
         }
+
+        
         if(root->left)
         f(root->left,curr);
 
