@@ -1,25 +1,19 @@
 class Solution {
 public:
 
-    void dfs(int i,int j,vector<vector<int>>&a,vector<vector<int>>&v,int &li,int &lj,int &ri,int &rj){
+    void dfs(int i,int j,vector<vector<int>>&a,vector<vector<int>>&v,int &ri,int &rj){
         v[i][j]=1;
 
-        int c=0;
-
-        int dx[4]={0,1};
-        int dy[4]={1,0};
-
-        for(int k=0;k<2;k++){
-            int x=i+dx[k];
-            int y=j+dy[k];
-
-            if(x>=0 and y>=0 and x<a.size() and y<a[0].size() and v[x][y]==0 and a[x][y]==1){
-                ri=max(ri,x);
-                rj=max(rj,y);
-                dfs(x,y,a,v,li,lj,ri,rj);
-            }
+        if(i+1<a.size() and a[i+1][j]==1 and v[i+1][j]==0){
+            ri=max(ri,i+1);
+            dfs(i+1,j,a,v,ri,rj);
         }
-
+         
+        if(j+1<a[0].size() and a[i][j+1]==1 and v[i][j+1]==0){
+            rj=max(rj,j+1);
+            dfs(i,j+1,a,v,ri,rj);
+        }
+        
         
 
 
@@ -36,7 +30,7 @@ public:
                 if(!v[i][j] and a[i][j]==1){
                     int li=i,lj=j,ri=i,rj=j;
 
-                    dfs(i,j,a,v,li,lj,ri,rj);
+                    dfs(i,j,a,v,ri,rj);
 
                     ans.push_back({li,lj,ri,rj});
                 }
