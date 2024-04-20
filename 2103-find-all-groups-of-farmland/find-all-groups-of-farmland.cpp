@@ -6,17 +6,15 @@ public:
 
         int c=0;
 
-        int dx[4]={0,0,1,-1};
-        int dy[4]={1,-1,0,0};
+        int dx[4]={0,1};
+        int dy[4]={1,0};
 
-        for(int k=0;k<4;k++){
+        for(int k=0;k<2;k++){
             int x=i+dx[k];
             int y=j+dy[k];
 
             if(x>=0 and y>=0 and x<a.size() and y<a[0].size() and v[x][y]==0 and a[x][y]==1){
-                li=min(li,x);
                 ri=max(ri,x);
-                lj=min(lj,y);
                 rj=max(rj,y);
                 dfs(x,y,a,v,li,lj,ri,rj);
             }
