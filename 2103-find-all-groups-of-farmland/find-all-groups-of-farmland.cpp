@@ -14,9 +14,6 @@ public:
             dfs(i,j+1,a,v,ri,rj);
         }
         
-        
-
-
     }
 
     vector<vector<int>> findFarmland(vector<vector<int>>& a) {
