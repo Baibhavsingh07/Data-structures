@@ -1,33 +1,45 @@
+class DisjointSet{
+    public:
+        vector<int>par,rank;
+
+        DisjointSet(int n){
+            par.resize(n+1);
+            rank.resize(n+1);
+
+            for(int i=0;i<n+1;i++)par[i]=i;
+        }
+
+        int findPar(int x){
+            if(x==par[x]) return x;
+
+            return par[x]=findPar(par[x]);
+        }
+
+        void unionByRank(int u,int v){
+            int paru = findPar(u);
+            int parv = findPar(v);
+
+            if(rank[paru]>rank[parv]) par[parv]=paru;
+            else if(rank[parv]>rank[paru]) par[paru]=parv;
+            else{
+                par[paru]=parv;
+                rank[parv]++;
+            }
+        }
+
+};
+
+
 class Solution {
 public:
-
-    int dfs(int i,int par , vector<vector<int>>&a,vector<int>&v,int d){
-        v[i]=1;
-        if(d==i) return 1;
-
-        for(auto x:a[i]){
-            if(x!=par and !v[x]){
-                if(dfs(x,i,a,v,d)==1) return 1;
-             }
-        }
-
-        return 0;
-    }
-
     bool validPath(int n, vector<vector<int>>& e, int s, int d) {
-        vector<vector<int>>a(n,vector<int>(0));
-        vector<int>v(n);
+        DisjointSet ds(n);
 
         for(auto x:e){
-            a[x[0]].push_back(x[1]);
-            a[x[1]].push_back(x[0]);
+            ds.unionByRank(x[0],x[1]);
         }
 
-        int i,j,c=0;
-      
-        if(dfs(s,-1,a,v,d)==1) return 1;
-            
+        return ds.findPar(s)==ds.findPar(d);
 
-        return 0;
     }
 };
