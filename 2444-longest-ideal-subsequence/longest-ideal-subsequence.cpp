@@ -18,7 +18,7 @@ vector<vector<int>>tbl;
     }
 
     int longestIdealString(string s, int k) {
-        tbl.resize(s.size(),vector<int>(28,-1));
+        tbl.resize(s.size(),vector<int>(27,-1));
         return f(0,char(96),s,k);
     }
 };
