@@ -3,7 +3,7 @@ public:
 
 int x;
 
-vector<vector<vector<int>>>tbl;
+vector<vector<int>>tbl;
 map<char,vector<int>>map;
 
     int f(int i,int j,int n,string &ring, string &key){
@@ -12,7 +12,7 @@ map<char,vector<int>>map;
 
         string s = to_string(i)+'-'+to_string(j)+'-'+to_string(n);
 
-        if(tbl[i][j][n]!=-1) return tbl[i][j][n];
+        if(tbl[i][j]!=-1) return tbl[i][j];
 
         int ans=INT_MAX;
         if(ring[i]==key[j]){
@@ -27,13 +27,13 @@ map<char,vector<int>>map;
             }
         }
 
-        return tbl[i][j][n] =ans;
+        return tbl[i][j] =ans;
     }
 
     int findRotateSteps(string ring, string key) {
         x=ring.size();
 
-        tbl.resize(101,vector<vector<int>>(101,vector<int>(101,-1)));
+        tbl.resize(101,vector<int>(101,-1));
 
         for(int i=0;i<ring.size();i++)map[ring[i]].push_back(i);
 
