@@ -1,30 +1,32 @@
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        unordered_map<int,int>mp;
+    vector<vector<int>> threeSum(vector<int>& a) {
         vector<vector<int>>ans;
-        set<vector<int>>st;
-        vector<int>v;
-        for(int i=0;i<nums.size();++i)
-        {
-            for(int j=i+1;j<nums.size();++j)
-            {
-                if(i!=j&&mp.find(-nums[i]-nums[j])!=mp.end()&&mp[-nums[i]-nums[j]]!=i&&mp[-nums[i]-nums[j]]!=j)
-                {
-                    v.push_back(nums[i]);
-                    v.push_back(nums[j]);
-                    v.push_back(-nums[i]-nums[j]);
-                    sort(v.begin(),v.end());
-                    st.insert(v);
-                    v.clear();
-                }
-                mp[nums[j]]=j;
+        int i,j,k,c=0;
+
+        sort(a.begin(),a.end());
+
+        set<vector<int>>set;
+
+        for(i=0;i<a.size();i++){
+            j=i+1;
+            int k=a.size()-1;
+
+            while(j<k){
+                if(a[i]+a[j]+a[k]==0) {
+                    vector<int>x = {a[i],a[j],a[k]};
+                     sort(x.begin(),x.end());
+                    set.insert(x);
+                    j++;k--;
+                }else if(a[i]+a[j]+a[k]>0){
+                    k--;
+                }else j++;
             }
         }
-        for(auto i:st)
-        {
-            ans.push_back(i);
-        }
+
+        for(auto x:set)ans.push_back(x);
+
         return ans;
+        
     }
-};
+}; 
