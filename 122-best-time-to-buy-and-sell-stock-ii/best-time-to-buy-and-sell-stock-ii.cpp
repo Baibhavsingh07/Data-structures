@@ -17,8 +17,23 @@ vector<vector<int>>tbl;
         return tbl[i][bs] = max(l,r);
     }
 
-    int maxProfit(vector<int>& prices) {
-        tbl.resize(prices.size(),vector<int>(2,INT_MIN));
-        return f(0,prices,0);
+    int maxProfit(vector<int>& a) {
+        tbl.resize(a.size()+1,vector<int>(2,0));
+
+        int i,j,c=0,s=0;
+
+        for(i=a.size()-1;i>=0;i--){
+            for(int bs=0;bs<2;bs++){
+                int l=0,r=0;
+                l = tbl[i+1][bs];
+
+                if(bs==0) r = -a[i] + tbl[i+1][1];
+                else r = a[i]+tbl[i+1][0];
+
+                 tbl[i][bs] = max(l,r);
+            }
+        }
+
+        return tbl[0][0];
     }
 };
