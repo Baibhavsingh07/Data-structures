@@ -7,8 +7,9 @@ public:
         sort(a.begin(),a.end());
 
         for(i=0;i<a.size();i++){
-            while(i>0 and i<a.size() and a[i]==a[i-1]) i++;
-            
+            int c=0;
+            while( i>0 and i<a.size() and a[i]==a[i-1]) i++;
+
             j=i+1;
             int k=a.size()-1;
 
