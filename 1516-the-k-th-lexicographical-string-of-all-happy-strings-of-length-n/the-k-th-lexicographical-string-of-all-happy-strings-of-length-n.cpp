@@ -3,11 +3,15 @@ public:
 
     vector<string>ans;
 
+    int m;
+
     void f(int i,string &curr,int n){
         if(i==n) {
             ans.push_back(curr);
             return;
         }
+
+        if(ans.size()==m) return;
 
         vector<char>x = {'a','b','c'};
 
@@ -25,6 +29,7 @@ public:
 
     string getHappyString(int n, int k) {
         string curr;
+        m=k;
         f(0,curr,n);
 
         // sort(ans.begin(),ans.end()) ;
