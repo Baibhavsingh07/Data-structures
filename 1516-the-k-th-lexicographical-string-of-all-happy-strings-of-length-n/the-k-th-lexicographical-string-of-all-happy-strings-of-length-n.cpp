@@ -27,7 +27,7 @@ public:
         string curr;
         f(0,curr,n);
 
-        sort(ans.begin(),ans.end()) ;
+        // sort(ans.begin(),ans.end()) ;
 
         if(ans.size()<k) return "";
         return ans[k-1];
