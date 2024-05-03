@@ -10,26 +10,19 @@
 class Solution {
 public:
 
-map<pair<TreeNode*,TreeNode*>,int>tbl;
-    int find(TreeNode* root, TreeNode* p){
-        if(!root) return 0;
-        if(root==p) return tbl[{root,p}] = 1;
 
-        if(tbl.find({root,p})!=tbl.end()) return tbl[{root,p}];
-
-        return tbl[{root,p}] = find(root->left,p) or find(root->right,p);
-        
-    }
 
     TreeNode* f(TreeNode* root,TreeNode* p,TreeNode* q){
         if(!root) return nullptr;
 
-        if(root==p or root==q or (find(root->left,p) and find(root->right,q)) or  (find(root->left,q) and find(root->right,p) )) {
+        if(root==p or root==q ) {
             return root;
         }
 
         auto l = f(root->left,p,q);
         auto r = f(root->right,p,q);
+
+        if(l and r) return root;
 
         if(l) return l;
         return r;
