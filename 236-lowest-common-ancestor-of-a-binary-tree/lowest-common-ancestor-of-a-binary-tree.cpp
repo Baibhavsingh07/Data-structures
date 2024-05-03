@@ -10,11 +10,14 @@
 class Solution {
 public:
 
+map<pair<TreeNode*,TreeNode*>,int>tbl;
     int find(TreeNode* root, TreeNode* p){
         if(!root) return 0;
-        if(root==p) return 1;
+        if(root==p) return tbl[{root,p}] = 1;
 
-        return find(root->left,p) or find(root->right,p);
+        if(tbl.find({root,p})!=tbl.end()) return tbl[{root,p}];
+
+        return tbl[{root,p}] = find(root->left,p) or find(root->right,p);
         
     }
 
