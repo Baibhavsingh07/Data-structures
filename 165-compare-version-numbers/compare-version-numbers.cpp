@@ -26,10 +26,10 @@ public:
             y.push_back(stoi(v));
         }
 
-        for(auto v:x) cout<<v<<" ";
-        cout<<endl;
-        for(auto v:y) cout<<v<<" ";
-        cout<<endl;
+        // for(auto v:x) cout<<v<<" ";
+        // cout<<endl;
+        // for(auto v:y) cout<<v<<" ";
+        // cout<<endl;
 
         i=0;j=0;
         while(i<x.size() and j<y.size()){
