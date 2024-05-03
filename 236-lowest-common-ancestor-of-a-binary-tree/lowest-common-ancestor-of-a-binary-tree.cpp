@@ -10,33 +10,29 @@
 class Solution {
 public:
 
-    TreeNode* ans=nullptr;
-
-
-    bool f2(TreeNode* root,TreeNode* p){
+    int find(TreeNode* root, TreeNode* p){
         if(!root) return 0;
         if(root==p) return 1;
 
-        return f2(root->left,p) or f2(root->right,p);
+        return find(root->left,p) or find(root->right,p);
         
     }
 
+    TreeNode* f(TreeNode* root,TreeNode* p,TreeNode* q){
+        if(!root) return nullptr;
 
-   void f1(TreeNode* root, TreeNode* p, TreeNode* q){
-        if(!root) return;
+        if(root==p or root==q or (find(root->left,p) and find(root->right,q)) or  (find(root->left,q) and find(root->right,p) )) {
+            return root;
+        }
 
-        if(f2(root,p) and f2(root,q)) ans = root;
+        auto l = f(root->left,p,q);
+        auto r = f(root->right,p,q);
 
-        f1(root->left,p,q);
-        f1(root->right,p,q);
-
-   }
-
-
+        if(l) return l;
+        return r;
+    }
 
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-         f1(root,p,q);
-
-         return ans;
+        return f(root,p,q);
     }
 };
