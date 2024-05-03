@@ -36,6 +36,8 @@ map<pair<TreeNode*,TreeNode*>,int>tbl;
     }
 
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        find(root,p);
+        find(root,q);
         return f(root,p,q);
     }
 };
