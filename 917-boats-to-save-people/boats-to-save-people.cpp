@@ -13,9 +13,6 @@ public:
             }else if(a[j]<=l){
                 c++;
                 j--;
-            }else{
-                c++;
-                i++;
             }
         }
 
