@@ -16,7 +16,7 @@ public:
             node=node->next;
          }
 
-         if(curr)curr->next=NULL;
+         curr->next=NULL;
 
     }
 };
