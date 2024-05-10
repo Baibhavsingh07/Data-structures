@@ -4,7 +4,7 @@ public:
         vector<int>ans;
         vector<double>v;
         vector<pair<int,int>>pos;
-        map<double,int>map;
+        unordered_map<double,int>map;
 
         int c=0;
 
