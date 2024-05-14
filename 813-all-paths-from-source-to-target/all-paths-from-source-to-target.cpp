@@ -1,30 +1,28 @@
 class Solution {
 public:
 
-map<int,vector<vector<int>>>tbl;
+vector<vector<int>>ans;
 
-    vector<vector<int>> f(int i,vector<vector<int>>&a,int n){
-        if(i==n) return {{n}};
-
-        vector<vector<int>> ans;
-
-        if(tbl.find(i)!=tbl.end()) return tbl[i];
+    void f(int i,vector<int>&curr,vector<vector<int>>&a){
+        if(i==a.size()-1) {
+            ans.push_back(curr);
+            return;
+        }
 
         for(auto x:a[i]){
-            auto l = f(x,a,n);
-            for(auto v:l) ans.push_back(v);
+            curr.push_back(x);
+            f(x,curr,a);
+            curr.pop_back();
         }
-
-        for(int x=0;x<ans.size();x++){
-            ans[x].insert(ans[x].begin(),i);
-        }
-
-        return tbl[i] = ans;
-
     }
 
+    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& a) {
+        vector<int>curr;
 
-    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        return f(0,graph,graph.size()-1);
+        f(0,curr,a);
+
+        for(auto &x:ans) x.insert(x.begin(),0);
+
+        return ans;
     }
 };
