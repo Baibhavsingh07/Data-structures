@@ -1,46 +1,40 @@
 class Solution {
 public:
 
-    int f(int i,int j,vector<vector<int>>& a){
-        
+    int dfs(int i,int j,vector<vector<int>>& a,vector<vector<int>>& v){
+        v[i][j]=1;
 
-        if(i>=a.size())
-        return 0;
-        if(j>=a[0].size())
-        return 0;
-        if(i<=-1)
-        return 0;
-        if(j<=-1)
-        return 0;
+        int ans=0;
 
-        if(a[i][j]==0)
-        return 0;
+        int dx[4]={0,0,1,-1};
+        int dy[4]={1,-1,0,0};
 
-        int x=a[i][j];
-        a[i][j]=0;
+        for(int k=0;k<4;k++){
+            int x = i+dx[k];
+            int y = j+dy[k];
 
-        int l1 = x + f(i+1,j,a);
-        int l2= x +f(i,j+1,a);
-        int l3= x +f(i-1,j,a);
-        int l4 = x + f(i,j-1,a);
-
-        a[i][j]=x;
-        
-        int x1=max(l1,l2);
-        int x2 = max(l4,l3);
-        return max(x2,x1);
+            if(x>=0 and y>=0 and x<a.size() and y<a[0].size() and v[x][y]==0 and a[x][y]!=0){
+                v[x][y]=1;
+                ans=max(ans,dfs(x,y,a,v));
+                v[x][y]=0;
+            }
+        }
+        v[i][j]=1;
+        return ans+a[i][j];
     }
 
 
     int getMaximumGold(vector<vector<int>>& a) {
-        int i,j,k,ans=0,c=0,m=0;
+        int i,j,c=0,s=0,ans=0;
+
 
         for(i=0;i<a.size();i++){
-            for(j=0;j<a[i].size();j++){
-                ans =f(i,j,a);
-                m=max(m,ans);
+            for(j=0;j<a[0].size();j++){
+                    vector<vector<int>>v(a.size(),vector<int>(a[0].size(),0));
+                    ans=max(ans,dfs(i,j,a,v));
             }
         }
-        return m;
+
+        return ans;
     }
 };
