@@ -2,7 +2,6 @@ class Solution {
 public:
 
     int dfs(int i,int j,vector<vector<int>>& a,vector<vector<int>>& v){
-        v[i][j]=1;
 
         int ans=0;
 
@@ -19,7 +18,6 @@ public:
                 v[x][y]=0;
             }
         }
-        v[i][j]=1;
         return ans+a[i][j];
     }
 
@@ -31,6 +29,7 @@ public:
         for(i=0;i<a.size();i++){
             for(j=0;j<a[0].size();j++){
                     vector<vector<int>>v(a.size(),vector<int>(a[0].size(),0));
+                    v[i][j]=1;
                     ans=max(ans,dfs(i,j,a,v));
             }
         }
