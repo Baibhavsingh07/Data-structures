@@ -3,7 +3,7 @@ public:
     
     struct comp{
         char operator()(vector<int>&a,vector<int>&b){
-            return a[0]>b[0];
+            return a[0]<b[0];
         }  
     };
     
