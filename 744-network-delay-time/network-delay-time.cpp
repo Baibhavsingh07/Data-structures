@@ -1,11 +1,7 @@
 class Solution {
 public:
     
-    struct comp{
-        char operator()(vector<int>&a,vector<int>&b){
-            return a[0]<b[0];
-        }  
-    };
+        
     
     
     int networkDelayTime(vector<vector<int>>& t, int n, int k) {
@@ -15,7 +11,7 @@ public:
             a[x[0]].push_back({x[1],x[2]});
         }
     
-        priority_queue<vector<int>, vector<vector<int>>, comp >q;
+        priority_queue<vector<int>, vector<vector<int>> >q;
             
         q.push({0,k});
         int l=0;
