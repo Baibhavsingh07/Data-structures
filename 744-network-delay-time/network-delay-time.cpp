@@ -2,7 +2,7 @@ class Solution {
 public:
     
     struct comp{
-        bool operator()(vector<int>&a,vector<int>&b){
+        char operator()(vector<int>&a,vector<int>&b){
             return a[0]>b[0];
         }  
     };
