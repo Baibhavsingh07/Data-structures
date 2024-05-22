@@ -1,44 +1,41 @@
 class Solution {
 public:
-         vector<vector<string>>ans;
+        vector<vector<string>>ans;
 
-
-int ispalin(int i,int j,string &s){
-        while(i<j) if(s[i++]!=s[j--]) return 0;
-
-        return 1;
-    }
-
-
-    vector<vector<string>> f(int i,vector<string>&curr,string &s){
-        if(i==s.size()){
-            return {{}};
+        int ispal(vector<string>&a){
+            for(auto x:a){
+                int i=0,j=x.size()-1;
+                while(i<j){
+                    if(x[i]!=x[j]) return 0;
+                    i++;j--;
+                }
+            }
+            return 1;
         }
 
-                vector<vector<string>>ans;
+        void f(int i,string s,vector<string>&curr){
+            if(i==s.size()){
+                if(ispal(curr)) ans.push_back(curr);
+                return;
+            }
 
-        
-        for(int j=i;j<s.size();j++){
-            if(ispalin(i,j,s)){
-                string axu  = s.substr(i,j-i+1);
-                
+            string a;
+            for(int j=i;j<s.size();j++){
+                a+=s[j];
+                curr.push_back(a);
 
-                auto x = f(j+1,curr,s);
-                for(auto &v:x){ v.insert(v.begin(),axu);
-                    ans.push_back(v);
-                }
-
-                // cout<<typeid(x).name();
+                f(j+1,s,curr);
+                curr.pop_back();
 
             }
         }
-        return ans;
-
-    }
 
     vector<vector<string>> partition(string s) {
         vector<string>curr;
-       return f(0,curr,s);
-         return ans;
+
+        f(0,s,curr);
+
+        return ans;
+
     }
 };
