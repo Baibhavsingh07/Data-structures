@@ -1,81 +1,50 @@
 class Solution {
 public:
 
-    int great(string s,vector<int>&let){
-        vector<int>mem(27,0);
-        for(auto x:s)
-        mem[x-'a']++;
+    int ans=0;
 
-        for(int i=0;i<26;i++){
-            if(mem[i]>let[i])
-            return 1;
-        }
-
-        return 0;
-        
-        }
-
-
-    void f(int i,vector<string>&words,vector<int>&wordScore,vector<int>&let,int curr,int &ans){
-        if(i==wordScore.size()){
-            ans=max(ans,curr);
+    void f(int i,vector<string>& w, unordered_map<char,int>&map, vector<int>& s,int x){
+        if(i==w.size()){
+            ans=max(ans,x);
             return;
         }
 
-        int c=great(words[i],let);
+        f(i+1,w,map,s,x);
 
-        
+        auto vv=map;
 
-        if(c==0){
-
-            for(int j=0;j<words[i].size();j++){
-            
-          
-                let[words[i][j]-'a']--;
-            
-
+        int c=0;
+        int v=0;
+        for(auto x:w[i]){
+            if(map.find(x)==map.end()){
+                c=1;
+                break;
+            }else{
+                map[x]--;
+                v+=s[x-'a'];
+                if(map[x]==0)map.erase(x);
+            }
         }
 
-        f(i+1,words,wordScore,let,curr+wordScore[i],ans);
-        
-
-        for(int j=0;j<words[i].size();j++){
-           let[words[i][j]-'a']++;
+        if(c==1) {
+            map=vv;
+            return ;
         }
-         }
 
-        f(i+1,words,wordScore,let,curr,ans);
+         f(i+1,w,map,s,x+v);
 
+        map=vv;
 
     }
 
+    int maxScoreWords(vector<string>& w, vector<char>& l, vector<int>& s) {
+        int i,j,c=0,k=0;
 
-    int maxScoreWords(vector<string>& words, vector<char>& letters, vector<int>& score) {
-        vector<int>wordScore;
+        unordered_map<char,int>map;
+        for(auto x:l)map[x]++;
 
-
-        int i,j,k,c=0,s=0;
-
-        for(int x=0;x<words.size();x++ ){
-            c=0;
-            for(i=0;i<words[x].size();i++){
-                c+=score[words[x][i]-'a'];
-            }
-            wordScore.push_back(c);
-        }
-
-        vector<int>let(27,0);
-        for(auto x:letters)
-        let[x-'a']++;
-
-        for(auto x:wordScore)
-        cout<<x<<" ";
-        cout<<endl;
-
-        int ans=0;
-
-        f(0,words,wordScore,let,0,ans);
-
+         f(0,w,map,s,0);
         return ans;
+        
     }
 };
