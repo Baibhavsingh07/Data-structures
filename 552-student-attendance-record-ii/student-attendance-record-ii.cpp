@@ -22,7 +22,7 @@ public:
     }
 
     int checkRecord(int n) {
-        memset(tbl,-1,sizeof(tbl));
+        for(int i=0;i<100001;i++) for(int j=0;j<4;j++) for(int k=0;k<3;k++) tbl[i][j][k]=-1;
         return f(0,n,0,1);
     }
 };
