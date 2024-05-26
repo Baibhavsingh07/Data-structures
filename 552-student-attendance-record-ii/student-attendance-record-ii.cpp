@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    int tbl[100005][4][3];
+    int tbl[100001][4][3];
 
     int f(int i,int n,int lc,int ac){
         if(i==n) return 1;
