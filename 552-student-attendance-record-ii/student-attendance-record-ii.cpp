@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    vector<vector<vector<int>>>tbl;
+    int tbl[100005][4][3];
 
     int f(int i,int n,int lc,int ac){
         if(i==n) return 1;
@@ -22,7 +22,7 @@ public:
     }
 
     int checkRecord(int n) {
-        tbl.resize(n+1,vector<vector<int>>(4,vector<int>(2,-1)));
+        memset(tbl,-1,sizeof(tbl));
         return f(0,n,0,1);
     }
 };
