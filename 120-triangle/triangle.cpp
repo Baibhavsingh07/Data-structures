@@ -15,7 +15,7 @@ public:
     }
 
     int minimumTotal(vector<vector<int>>& a) {
-        tbl.resize(a.size(),vector<int>(a.size()+1,INT_MAX));
+        tbl.resize(a.size(),vector<int>(a.size(),INT_MAX));
         return f(0,0,a,a.size());
     }
 };
