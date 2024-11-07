@@ -1,21 +1,22 @@
 class Solution {
 public:
 
-    unordered_map<int,int>map;
+    vector<int>ans;
 
     int f(int i,vector<int>& a){
         if(i>=a.size()) return 0;
 
-        if(map.find(i)!=map.end()) return map[i];
+        if(ans[i]!=-1) return ans[i];
 
         int l = f(i+1,a);
         int r=0;
             r = a[i]+f(i+2,a);
 
-        return map[i] = max(l,r);
+        return ans[i] = max(l,r);
     }
 
     int rob(vector<int>& a) {
+        ans.resize(a.size()+1, -1);
         return f(0,a);
     }
 };
