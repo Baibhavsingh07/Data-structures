@@ -16,7 +16,17 @@ public:
     }
 
     int rob(vector<int>& a) {
-        ans.resize(a.size()+1, -1);
-        return f(0,a);
+        ans.resize(a.size()+2, -1);
+        ans[a.size()+1]=0;
+        ans[a.size()]=0;
+        for(int i=a.size()-1;i>=0;i--){
+            if(ans[i+1] > ans[i+2] + a[i]) {
+                ans[i]=ans[i+1];
+            } else {
+                ans[i] = ans[i+2]+a[i];
+            }
+        }
+
+        return ans[0];
     }
 };
