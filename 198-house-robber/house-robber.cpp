@@ -1,28 +1,21 @@
 class Solution {
 public:
 
+    unordered_map<int,int>map;
 
+    int f(int i,vector<int>& a){
+        if(i>=a.size()) return 0;
 
-    // int f(int i,vector<int>&a,vector<int>&tbl){
-    //     if(i>=a.size()) return 0;
+        if(map.find(i)!=map.end()) return map[i];
 
-    //     if(tbl[i]!=-1) return tbl[i];
+        int l = f(i+1,a);
+        int r=0;
+            r = a[i]+f(i+2,a);
 
-    //     return tbl[i] =  max(f(i+1,a,tbl),a[i]+f(i+2,a,tbl));
-    // }
- 
-    int rob(vector<int>& a) { 
-        
-        // unordered_map<int,int>tbl;
-        int x=0,y=0;
+        return map[i] = max(l,r);
+    }
 
-        for(int i=a.size()-1;i>=0;i--){
-            int ans=max(x,y+a[i]);
-            y=x;
-            x=ans;
-
-        }
-
-        return x;
+    int rob(vector<int>& a) {
+        return f(0,a);
     }
 };
