@@ -1,27 +1,21 @@
 class Solution {
 public:
-
-    vector<vector<int>>map;
-    int f(int i,vector<int>&a, int bos) {
-        if(i==a.size()) return 0;
-
-        if(map[i][bos]!=INT_MIN) return map[i][bos];
-
-        int l = f(i+1,a,bos);
-        int r=0,k=0;
-
-        if(bos == 0) {
-            r = -a[i]+f(i+1,a,1);
-        }
-        if(bos==1){
-            k=a[i];
-        }
-        return  map[i][bos] = max(l,max(r,k));
-    }
-
     int maxProfit(vector<int>& a) {
         int i,j,c=0,s=0;
-        map.resize(a.size()+1, vector<int>(2,INT_MIN));
-        return f(0,a,0);
+        vector<int>t1(a.size()),t2(a.size());
+        t1[0]=a[0];
+        t2[a.size()-1]=a[a.size()-1];
+        for(i=1;i<a.size();i++){
+            t1[i]=min(t1[i-1],a[i]);
+        }
+
+        for(i=a.size()-2;i>=0;i--){
+            t2[i]=max(t2[i+1],a[i]);
+        }
+
+        for(i=0;i<a.size();i++){
+            c=max(c,t2[i]-t1[i]);
+        }
+        return c;
     }
 };
