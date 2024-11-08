@@ -8,27 +8,10 @@ public:
             a[i]=a[i]^a[i-1];
         }
 
+        int m=pow(2,mb)-1;
         for(auto x:a){
-            int xx=0;
-            int ta=0;
-            int n=x;
-
-            int m=mb;
-            vector<int>v;
-            while(n){
-                int r=n%2;
-                v.push_back(r);
-                n/=2;
-            }
-
-            for(i=0;i<mb;i++){
-                if(i>=v.size()) ta+=pow(2,i);
-                else {
-                    if(v[i]==0) ta+=pow(2,i);
-                }
-            }
-           
-            ans.push_back(ta);
+            
+            ans.push_back(x ^ m);
         }
 
         reverse(ans.begin(),ans.end());
