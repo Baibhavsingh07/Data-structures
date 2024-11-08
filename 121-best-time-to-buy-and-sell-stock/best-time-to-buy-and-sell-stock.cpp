@@ -9,12 +9,9 @@ public:
             t1[i]=min(t1[i-1],a[i]);
         }
 
-        for(i=a.size()-2;i>=0;i--){
-            t2[i]=max(t2[i+1],a[i]);
-        }
 
         for(i=0;i<a.size();i++){
-            c=max(c,t2[i]-t1[i]);
+            c=max(c,a[i]-t1[i]);
         }
         return c;
     }
