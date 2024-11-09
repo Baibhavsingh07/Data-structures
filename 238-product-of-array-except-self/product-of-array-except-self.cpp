@@ -1,24 +1,20 @@
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& a) {
-        vector<int>ans(a.begin(),a.end());
+        int n=a.size(),i,j,c=0;
+        vector<int>ans(n);
 
-        long long s1 = 1,s2=1,c=0;
+        vector<int>p(n);
+        vector<int>s(n);
+        p[0]=a[0];
+        s[n-1]=a[n-1];
+        for(i=1;i<n;i++) p[i]=p[i-1]*a[i];
+        for(i=n-2;i>=0;i--) s[i]=s[i+1]*a[i];
 
-        for(auto x:a) s1*=x;
-        for(auto x:a) if(x!=0) s2*=x;
-                        else c++;
+        p.insert(p.begin(),1);
+        s.push_back(1);
 
-        for(int i=0;i<a.size();i++){
-            if(a[i]==0 and c==1){
-                ans[i]=s2;
-            }else if(a[i]==0 and c>1){
-                ans[i]=0;
-            }else{
-                ans[i]=s1/a[i];
-            }
-        }
+        for(i=0;i<n;i++) ans[i]=p[i]*s[i+1];
         return ans;
-
     }
 };
